@@ -10,6 +10,8 @@
 #import "GameBoard.h"
 @interface ViewController ()
 
+@property (nonatomic) int inputCounter;
+
 @end
 
 @implementation ViewController
@@ -21,8 +23,8 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     myGameBoard = [[GameBoard alloc] init];
-    for (int i = 0; i < [myGameBoard.myColors count]; i++){
-        [[myButtons objectAtIndex:i] setTitle:[myGameBoard.myColors objectAtIndex:i] forState:UIControlStateNormal];
+    for (int i = 0; i < 9; i++){
+        [[myButtons objectAtIndex:i] setTitle:[myGameBoard.myChoice objectAtIndex:0] forState:UIControlStateNormal];
     }
 }
 
@@ -31,6 +33,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buttonPressed:(id)sender {
+- (IBAction)buttonPressed:(UIButton *) sender{
+    
+    int positionIndex = sender.tag;
+    self.inputCounter++;
+    [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:self.inputCounter%3] forState:UIControlStateNormal];
 }
 @end

@@ -10,13 +10,13 @@
 
 @implementation GameBoard
 
-@synthesize myColors;
+@synthesize myChoice;
 
 - (id) init
 {
     self = [super init];
     if (self) {
-        myColors = [[NSArray alloc] initWithObjects:@" ", @"X", @"O", nil];
+        myChoice = [[NSArray alloc] initWithObjects:@"-", @"X", @"O", nil];
         
     }
         

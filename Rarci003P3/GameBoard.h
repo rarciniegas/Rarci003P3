@@ -10,9 +10,9 @@
 
 @interface GameBoard : NSObject {
     
-    NSArray * myColors;
+    NSArray * myChoice;
 }
 
-@property (strong, nonatomic) NSArray * myColors;
+@property (strong, nonatomic) NSArray * myChoice;
 
 @end
