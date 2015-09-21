@@ -37,7 +37,7 @@
     
     int positionIndex = (int) sender.tag;
     
-    if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@"-"]) {
+    if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@" "]) {
         self.inputCounter++;
         [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:1 + self.inputCounter%2] forState:UIControlStateNormal];
     }
@@ -47,7 +47,7 @@
     
     for (int i = 0; i < 9; i++) {
     
-        [[myButtons objectAtIndex:i] setTitle:@"-" forState:UIControlStateNormal];
+        [[myButtons objectAtIndex:i] setTitle:@" " forState:UIControlStateNormal];
         
     }
     self.inputCounter = 0;

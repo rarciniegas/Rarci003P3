@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        myChoice = [[NSArray alloc] initWithObjects:@"-", @"O", @"X", nil];
+        myChoice = [[NSArray alloc] initWithObjects:@" ", @"O", @"X", nil];
         
     }
         
