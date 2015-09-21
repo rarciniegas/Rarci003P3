@@ -35,8 +35,23 @@
 
 - (IBAction)buttonPressed:(UIButton *) sender{
     
-    int positionIndex = sender.tag;
-    self.inputCounter++;
-    [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:self.inputCounter%3] forState:UIControlStateNormal];
+    int positionIndex = (int) sender.tag;
+    
+    if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@"-"]) {
+        self.inputCounter++;
+        [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:1 + self.inputCounter%2] forState:UIControlStateNormal];
+    }
 }
+
+- (IBAction)resetPressed:(UIButton *)sender {
+    
+    for (int i = 0; i < 9; i++) {
+    
+        [[myButtons objectAtIndex:i] setTitle:@"-" forState:UIControlStateNormal];
+        
+    }
+    self.inputCounter = 0;
+    
+}
+
 @end
