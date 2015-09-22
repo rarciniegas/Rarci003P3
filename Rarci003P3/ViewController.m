@@ -43,16 +43,20 @@
 - (IBAction)buttonPressed:(UIButton *) sender{
     
     int positionIndex = (int) sender.tag;
-    // if the position is empty places the an X or O
-    if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@" "]) {
-        self.inputCounter++;
-        [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:1 + self.inputCounter%2] forState:UIControlStateNormal];
-        // check if is a winner
-        if ([self isWinner:positionIndex])
-            myDisplay.text = [NSString stringWithFormat:@"%@ is the winner", [[myButtons objectAtIndex:positionIndex] currentTitle]];
-  
-    }
-}
+    
+    if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@" "])
+        [[myButtons objectAtIndex:positionIndex] setTitle:@"X" forState:UIControlStateNormal];
+    
+    else if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@"X"])
+        [[myButtons objectAtIndex:positionIndex] setTitle:@"O" forState:UIControlStateNormal];
+    
+    else if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@"O"])
+        [[myButtons objectAtIndex:positionIndex] setTitle:@" " forState:UIControlStateNormal];
+    
+    // check if is a winner
+    if ([self isWinner])
+        myDisplay.text = [NSString stringWithFormat:@"%@ is the winner", [[myButtons objectAtIndex:positionIndex] currentTitle]];
+  }
 
 // Resets the board
 - (IBAction)resetPressed:(UIButton *)sender {
@@ -66,30 +70,30 @@
 }
 
 // check if is a winner
-- (BOOL)isWinner: (int) i{
-    if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
-        ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:1] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle] ]))
+- (BOOL)isWinner{
+    if (([[[myButtons objectAtIndex:0] currentTitle] isEqualToString:[[myButtons objectAtIndex:1] currentTitle]]) &&
+        ([[[myButtons objectAtIndex:1] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle]]) && !([[[myButtons objectAtIndex:0] currentTitle] isEqualToString:@" "]))
         return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:3] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:5] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:3] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:4] currentTitle] isEqualToString:[[myButtons objectAtIndex:5] currentTitle]]) && !([[[myButtons objectAtIndex:3] currentTitle] isEqualToString:@" " ]))
              return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:6] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:7] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:8] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:6] currentTitle] isEqualToString:[[myButtons objectAtIndex:7] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:7] currentTitle] isEqualToString:[[myButtons objectAtIndex:8] currentTitle]]) && !([[[myButtons objectAtIndex:6] currentTitle] isEqualToString:@" " ]))
         return YES;
-    else     if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
-                 ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:3] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:6] currentTitle] ]))
+    else     if (([[[myButtons objectAtIndex:3] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
+                 ([[[myButtons objectAtIndex:6] currentTitle] isEqualToString:[[myButtons objectAtIndex:3] currentTitle]]) && !([[[myButtons objectAtIndex:0] currentTitle] isEqualToString:@" "]))
         return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:1] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:7] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:4] currentTitle] isEqualToString:[[myButtons objectAtIndex:1] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:7] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && !([[[myButtons objectAtIndex:1] currentTitle] isEqualToString:@" " ]))
         return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:5] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:8] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:5] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:8] currentTitle] isEqualToString:[[myButtons objectAtIndex:5] currentTitle]]) && !([[[myButtons objectAtIndex:2] currentTitle] isEqualToString:@" " ]))
         return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:8] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:4] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:8] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && !([[[myButtons objectAtIndex:4] currentTitle] isEqualToString:@" " ]))
         return YES;
-    else if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle]]) &&
-             ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:6] currentTitle] ]))
+    else if (([[[myButtons objectAtIndex:4] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle]]) &&
+             ([[[myButtons objectAtIndex:6] currentTitle] isEqualToString:[[myButtons objectAtIndex:4] currentTitle]]) && !([[[myButtons objectAtIndex:2] currentTitle] isEqualToString:@" " ]))
         return YES;
     else return NO;
 }

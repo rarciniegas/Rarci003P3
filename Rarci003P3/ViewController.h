@@ -18,7 +18,7 @@
 
 @interface ViewController : UIViewController
 
-- (BOOL) isWinner: (int) currentPosition;
+- (BOOL) isWinner;
 
 - (IBAction)buttonPressed:(id)sender;
 
