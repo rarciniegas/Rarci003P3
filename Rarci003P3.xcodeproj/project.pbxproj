@@ -356,6 +356,7 @@
 				INFOPLIST_FILE = Rarci003P3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,6 +367,7 @@
 				INFOPLIST_FILE = Rarci003P3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -422,6 +424,7 @@
 				8E3A03DE1BAF91BD001122AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E3A03DF1BAF91BD001122AF /* Build configuration list for PBXNativeTarget "Rarci003P3Tests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +433,7 @@
 				8E3A03E11BAF91BD001122AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

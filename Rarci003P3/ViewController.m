@@ -46,19 +46,18 @@
     if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@" "]) {
         self.inputCounter++;
         [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:1 + self.inputCounter%2] forState:UIControlStateNormal];
-         if ([self isWinner:positionIndex])
-             myDisplay.text = @" is a winner";
-
+        
+        if ([self isWinner:positionIndex])
+            myDisplay.text = [NSString stringWithFormat:@"%@ is the winner", [[myButtons objectAtIndex:positionIndex] currentTitle]];
+  
     }
 }
 
 - (IBAction)resetPressed:(UIButton *)sender {
     
     for (int i = 0; i < 9; i++) {
-    
         [[myButtons objectAtIndex:i] setTitle:@" " forState:UIControlStateNormal];
         myDisplay.text = @"";
-        
     }
     self.inputCounter = 0;
     
