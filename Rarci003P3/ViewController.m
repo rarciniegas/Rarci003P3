@@ -39,20 +39,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+// proceess the button pressed
 - (IBAction)buttonPressed:(UIButton *) sender{
     
     int positionIndex = (int) sender.tag;
-    
+    // if the position is empty places the an X or O
     if ([[[myButtons objectAtIndex:positionIndex] currentTitle] isEqualToString:@" "]) {
         self.inputCounter++;
         [[myButtons objectAtIndex:positionIndex] setTitle:[myGameBoard.myChoice objectAtIndex:1 + self.inputCounter%2] forState:UIControlStateNormal];
-        
+        // check if is a winner
         if ([self isWinner:positionIndex])
             myDisplay.text = [NSString stringWithFormat:@"%@ is the winner", [[myButtons objectAtIndex:positionIndex] currentTitle]];
   
     }
 }
 
+// Resets the board
 - (IBAction)resetPressed:(UIButton *)sender {
     
     for (int i = 0; i < 9; i++) {
@@ -63,6 +65,7 @@
     
 }
 
+// check if is a winner
 - (BOOL)isWinner: (int) i{
     if (([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:0] currentTitle]]) &&
         ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:1] currentTitle]]) && ([[[myButtons objectAtIndex:i] currentTitle] isEqualToString:[[myButtons objectAtIndex:2] currentTitle] ]))

@@ -22,13 +22,11 @@
 
 - (IBAction)buttonPressed:(id)sender;
 
-
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *myButtons;
 
 @property (strong, nonatomic) GameBoard * myGameBoard;
 
 @property (strong, nonatomic) IBOutlet UILabel *myDisplay;
-
 
 
 @end
